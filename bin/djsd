@@ -81,6 +81,7 @@ server_options = {
 }
 
 server = WEBrick::HTTPServer.new(server_options)
+server.mount('/static', WEBrick::HTTPServlet::FileHandler, './static', FancyIndexing: true)
 server.mount('/', dotjs)
 
 %w( INT TERM ).each do |sig|
